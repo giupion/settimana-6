@@ -1,189 +1,259 @@
+// Varibili JS
+let var1 = 'testo';
+let var2 = 25;
+let var3 = true;
+let var4 = [25, 9, 6, 12, 18]; // Array
+let var5 = {}; // Oggetto
+let var6 = undefined;
+let var7 = null;
 
-/*func1() //richiamata prima o dopo uguale
-function func1(params){return params;}
+// Funzioni JS
+// dichiarazione di funzione
+func1();
+function func1(params) {
+    // blocco di istruzioni
+    return params; // ritorno un valore
+}
+func1();
 
-//dichiarazione di una funzione
+// funzione espressione
+// func2(); // Errore
+let func2 = function(params) {
+    // blocco di istruzioni
+    return params; // ritorno un valore
+}
+func2();
 
+// Arrow Function
+let func3 = (params) => {
+    // blocco di istruzioni
+    return params; // ritorno un valore
+}
+func3();
 
-let func2=function (params){
+// Funzioni autoinvocanti
+(function() {
+    console.log("Sono una funzione anonima!!!")
+})()
 
-    return params
+// funzione di callback
+function call(name) {
+    return "Sono una funzione di callback di nome " + name;
 }
 
-//richiamata solo dopo func2 è anonima variabile gli da nome utilizzabile come variabile di un altra funzione
-
-
-function call( name){return "sono una funzione di call back di nome"+name;}
-
-console.log(call());
-
-//stampa return di call stampo solo la funzione con console.log(call) il copro della funzione
-let f=call; //passo corpo di una funzione a f
-
-console.log(f()) //invoco corpo della funzione
-
-
-function miaFunc(f){console.log (f())};
-
-
-miaFunc(call) //corpo della funziome si trova dentro f
-function call( name){return "sono una funzione di call back di nome"+name;}
-
-console.log(call());
-
-function miaFunc(v,f){console.log(f(v));}
-
-miaFunc('abc',call)
-//esecutore di funzione passo a call il nome che è abc!
-
-function itera (n,i){console.log(i+":"+n)}
-var4.ForEach(itera)
-
-
-
-
-//callback
-
-document.body.addEventListener('click',()=>alert('click'))
-//ogni volta che clicco si pare la funzione () e spunta alert come funzione
-
-
-function(){console.log()}
-
-//autoinvocanti 
-
-(function(){console.log("sono una funzione")} ())
-
-let obj1={
-    name:'Mario',
-    lastname:'Rossi',
-    city:"Roma",
-    2:"occhi",
-    saluta: function(){return this.name+" "+city}
+function sum(num) {
+    return num + Math.floor(Math.random() * 10);
 }
 
-console.log(obj1)
+function miaFunc(v, f) {
+    console.log(f(v));
+}
 
-console.log(obj1.name)
+miaFunc('abc', call);
+miaFunc(25, sum);
 
 
+function itera(n, i) {
+    console.log(i + ": " + n);
+}
+
+var4.forEach(itera)
+
+console.log("--------")
+
+var4.forEach((n, i) => {
+    console.log(i + ": " + n);
+})
+
+
+// Object Js
+let obj1 = {
+    name: 'Mario',
+    "last name": "Rossi",
+    city: "Roma",
+    2: "occhi",
+    saluta: function () {
+        return this.name + " " + this.city;
+    }
+}
+
+console.log(obj1);
+console.log(obj1.name); // dot notation
 console.log(obj1['name']);
-
-console.log(obj1["last name"])
-console.log(obj1[2]) //solo con dot notation numero
-
+console.log(obj1["last name"]); 
+console.log(obj1[2])
 console.log(obj1.saluta())
 
 
-let fiat500={
-    marca:'Fiat',
-    modello:'500',
-    colore:'Rosso',
-
+let fiat500 = {
+    marca: 'Fiat',
+    modello: '500',
+    alimentazione: 'benzina',
+    colore: 'Rosso'
 }
 
-let forFiesta={
-    marca:'mercedes',
-    modello:'smart',
-    colore:'nero',
+let fordFiesta = {
+    marca: 'Ford',
+    modello: 'Fiesta',
+    porte: 3,
+    colore: 'blu'
 }
 
-
-//definire un prototipo JS con lettera maiuscola
-
-function Auto(marca,modello,colore) {
-this.marca=marca;
-this.modello=modello;
-this.colore=colore;
+let mercedesSmart = {
+    marca: 'Mercedes',
+    modello: 'Smart',
+    colore: 'Nero',
+    cambio: 'automatico'
 }
 
-let cinquecento=new Auto('Fiat', '500', 'Rosso');
-let fiesta=new Auto('Fiat', '500', 'Rosso');
-console.log(cinquecento);
+// Prototipo JS
+function Auto(marca, modello, colore) {
+    this.marca = marca;
+    this.modello = modello;
+    this.colore = colore;
+}
 
-//ogni oggetto di tipo auto deve avere na marca funzione per costruire un oggetto
+let cinquecento = new Auto('Fiat', '500', 'Rosso');
+let fiesta = new Auto('Ford', 'Fiesta', 'blu');
+let smart = new Auto('Mercedes', 'Smart', 'nero');
+
+let arr = [cinquecento, fiesta, smart];
+
+Auto.prototype.info = function () {
+    return this.marca + " " + this.modello + " " + this.colore;
+}
+
+Auto.prototype.ruote = 4;
+
+smart.cambio = 'automatico';
 
 
-
-Auto.prototype.info=function (){return this.marca+" "+this.colore;}
-
-//aggiungo una propietà info--- a tutti
-let smart=new Auto('Mercedes', 'Smart', 'nero')
-
+arr.forEach(obj => console.log(obj.info()))
 
 console.log(cinquecento.info());
+console.log(fiesta.info());
+console.log(smart.info()); 
 
-// o aggiungo al singolo oggetto 
+console.log(cinquecento.marca);
+console.log(fiesta.marca);
+console.log(smart.marca);
 
-smart.cambio='automatico'
+// Classi in JS
+// Ereditarietà 
 
-Auto.prototype.ruote=4;
-
-//this riferimento all'oggetto cinquecento.marca fiat! leggi la marca di me stesso dimmi il nome di me stesso su auto è chiaro perchè è generico, quindi this ha senso perchè poi sepcifichi e richiami col this la "macchina già fatta finita"
-
-//this riferimento al costruttore...oggetto che interrogo in quel momento this si riferisce a  oggetto che sto leggendo
-
-Auto.prototype.info=function (){return this.marca+" "+this.colore;}
-console.log(fiesta.marca)
-//fiesta.info il this sarà fiesta su prototype 
-
-
-class AutoClass{
-//come la funzione
-    constructor(marca,modello,colore){
-        this.marca=marca;
-        this.colore=colore;
-        this.modello=modello;
-
-        function Auto(marca,modello,colore) {
-            this.marca=marca;
-            this.modello=modello;
-            this.colore=colore;
-            }
+class AutoClass {
+    constructor(marca, modello, colore) {
+        this.marca = marca;
+        this.modello = modello;
+        this.colore = colore;
     }
 }
 
-class Persona{
-    static count=0 //rendo la propietà di classe e non di this perchè se stampo oggetto dal costruttore e senza static con this conterebbe solo il sigolop riferimento di this e count rimarrebbe 1 per ogni oggetto, se rendi il contatore proprieta con static di classe conta tutti gli oggetti con staic non crei oggetti
-    nome;
-    constructor(nome,cognome,città){this.nome=nome;
-this.cognome;
-this.città;
-count++}}
+let c = new AutoClass('Fiat', '500', 'Rosso');
+let f = new AutoClass('Ford', 'Fiesta', 'blu');
+let s = new AutoClass('Mercedes', 'Smart', 'nero');
 
+AutoClass.prototype.info = function () {
+    return this.marca + " " + this.modello + " " + this.colore;
+}
 
-//classe generica
-class Uomo extends Persona{constructor(nome,cognome,città){
-    
-    super //richiamo costruttore della super classe
-    super(nome,cognome,citta,anni) //il costruttore della super classe sa come handle nome cognome citta...la sottoclasse handle only barba
-    
-    this.barba;}}
-//se persona ha metodi e nome cognome proprietà li eredita uomo in piu uomo ha this.barba e un altro metodo
-    //con extend a umo caratteristica di persona con caratteristica dell'uomo in piuk
+console.log(c);
+console.log(f);
+console.log(s);
 
+class Persona {
 
-    class Donna{constructor (nome,cognome,citta,smalto){
+    static conta = 0;
 
-        this.nome=nome;
-        this.cognome=cognome;
-        this.citta=citta;
-    }}
-
-    saluta (){ return 'ciao sono'+this.nome}
-
-    //da classe specifica tolgo cosa è comune metodi toglierli e metterli sopra su persona
-
-    class Veicolo{}
-
-    class Auto extends Veicolo{
+    constructor(nome, cognome, citta, anni) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.citta = citta;
+        this.anni = anni;
+        Persona.conta++;
     }
 
-    class Moto extends Veicolo{}
+    confronta(p) {
+        if(p.anni > this.anni) {
+            return p.name + ' è più vecchio di ' + this.name;
+        } else {
+            return p.name + ' è più giovane di ' + this.name;
+        }
+    }
 
-    class Suv extends Auto{}
+    compleanno() {
+        this.anni++;
+    }
 
-    static count =0 */
+    saluta() {
+        return 'Ciao sono ' + this.nome + " " + this.cognome + " di anni " + this.anni;
+    }
+
+    verso() {
+        return 'Ahhhhh ';
+    }
+}
+
+class Uomo extends Persona {
+    barba;
+    constructor(nome, cognome, citta, anni, barba) {  
+        super(nome, cognome, citta, anni)
+        this.barba = barba;
+    }
+
+    static lavora() {
+        return 'Sto lavorando';
+    }
+
+    verso() {
+        return super.verso() + "ah ah ah";
+    }
+}
+
+class Donna extends Persona {
+    constructor(nome, cognome, citta, anni, smalto) {
+        super(nome, cognome, citta, anni)
+        this.smalto = smalto;
+    }
+
+    contabilita() {
+
+    }
+}
+
+class Altro extends Persona{
+    constructor(nome, cognome, citta, anni, x) {
+        super(nome, cognome, citta, anni)
+        this.x = x;
+    }
+
+    altro() {
+
+    }
+}
+
+let u = new Uomo('Mario', 'Rossi', 'Roma', 44, true);
+console.log('Persone: ' + Persona.conta)
+let m = new Uomo('Giuseppe', 'Verdi', 'Napoli', 38, false);
+console.log('Persone: ' + Persona.conta)
+let d = new Donna('Francesca', 'Neri', 'Milano', 22, true);
+console.log('Persone: ' + Persona.conta)
+
+u.compleanno();
+d.compleanno();
+
+u.confronta(d);
+
+console.log(u.verso());
+console.log(d.verso());
+
+console.log(u.saluta());
+console.log(m.saluta());
+console.log(d.saluta());
+
+//console.log(u.lavora())
+
+Math.random();
 
 
 
@@ -198,9 +268,9 @@ class Uomo extends Persona{constructor(nome,cognome,città){
     }
 
     confronto(compara){
-       if(compara.age>this.age){return compara.age+" l'eta è maggiore! " +this.age}
-       else if(compara.age===this.age){return compara.age+ " l'eta è uguale " +this.age}
-       else if(compara.age<this.age){return compara.age+" l'eta è minore " +this.age}
+       if(this.age>compara.age){return this.age+" l'eta è maggiore! " +compara.age}
+       else if(this.age===compara.age){return this.age+ " l'eta è uguale " +compara.age}
+       else if(this.age<compara.age){return this.age+" l'eta è minore " +compara.age}
     }
     }
 
@@ -211,8 +281,31 @@ class Uomo extends Persona{constructor(nome,cognome,città){
     let z=new User ("Wario","Wario",30,"Regno dei funghi viola")
 
     console.log(x.confronto(z))
-    console.log(y.confronto(z))
+    console.log(y.confronto(x))
 
     // in pratica in questo caso p.age è la variabile che apsso al metodo, quindi sara quello che metto dentro confronto ()! poi ovviamente è come se leggessi il metodo confronto al contrario.Quindi confronto(y) rappresenta il p.age del metodo , e this e quando lo richiami a funzione x.confronto rappresenta this.age x
 
+    //con la scrittura this. prima y rappresenta 25 il paramentro dell 'oggetto luigi minore a compara che è z
 
+
+    class Pet{ constructor(petName,ownerName,species,nature)
+        {
+        this.petName=petName;
+        this.ownerName=ownerName;
+        this.species=species;
+        this.nature=nature;
+    }
+confrontaPadrone(padrone){
+
+if(this.ownerName===padrone.ownerName){return true}
+else {return false}
+}
+    }
+    let Pikachu=new Pet("Sparky","Ash","nano","Timida")
+
+    let Charmender=new Pet("Zippo","Ash","pony","Incazzata")
+
+    let Psyduck=new Pet("Psy","Misty","nano","Modesta")
+
+    console.log(Pikachu.confrontaPadrone(Charmender))
+console.log(Pikachu.confrontaPadrone(Psyduck))
