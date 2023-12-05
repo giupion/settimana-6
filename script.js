@@ -197,10 +197,10 @@ class Uomo extends Persona{constructor(nome,cognome,città){
         this.location=location;
     }
 
-    confronto(x){
-       if(this.age>x.age){return "l'eta è maggiore!"}
-       else if(this.age===x.age){return "l'eta è uguale"}
-       else if(this.age<x.age){return "l'eta è minore"}
+    confronto(compara){
+       if(compara.age>this.age){return compara.age+" l'eta è maggiore! " +this.age}
+       else if(compara.age===this.age){return compara.age+ " l'eta è uguale " +this.age}
+       else if(compara.age<this.age){return compara.age+" l'eta è minore " +this.age}
     }
     }
 
@@ -210,6 +210,9 @@ class Uomo extends Persona{constructor(nome,cognome,città){
     let y=new User ("Luigi","Mario",25,"Regno dei funghi")
     let z=new User ("Wario","Wario",30,"Regno dei funghi viola")
 
-    console.log(x.confronto(y))
+    console.log(x.confronto(z))
     console.log(y.confronto(z))
+
+    // in pratica in questo caso p.age è la variabile che apsso al metodo, quindi sara quello che metto dentro confronto ()! poi ovviamente è come se leggessi il metodo confronto al contrario.Quindi confronto(y) rappresenta il p.age del metodo , e this e quando lo richiami a funzione x.confronto rappresenta this.age x
+
 
