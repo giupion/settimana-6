@@ -1,0 +1,25 @@
+{"nome":"Mario",
+"eta":25,
+
+"indirizzo" :{"via":"test 53"}{}
+
+
+{"nome":"Mario",
+"eta":25,
+
+"indirizzo" :{"via":"test 53"}}
+
+{"nome":"Mario",
+"eta":25,
+
+"indirizzo" :{"via":"test 53"}}
+
+{"nome":"Mario",
+"eta":25,
+
+"indirizzo" :{"via":"test 53"}}
+
+//salvare dati se fai il login e cambi pagina devi rifare login...storage, local storage di default non salvo i dati, 
+
+//local storage dati permaent !, sessionStorage chiuso il browser dati cancellati
+
