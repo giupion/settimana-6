@@ -9,9 +9,11 @@ console.log(nomeinput)
  let valoreinput=nomeinput.value;
 console.log(valoreinput) 
 
-i++;
-localStorage.setItem(`nome${i}`,valoreinput)
 
+
+
+localStorage.setItem(`nome${i}`,valoreinput)
+i++;
 
     //abbiamo salvato il valore dei dati di select e input  che abbiamo preso come array di 4 elementi, su log appare come una nodelist di 4, e assegniamo a variabili, ci si mette con un div con un id e si prende il discendente dentro 
     
@@ -19,10 +21,6 @@ localStorage.setItem(`nome${i}`,valoreinput)
 
     let form2=document.querySelector("#button2")
     form2.addEventListener('click',() => {
-
-       
-      
-
     localStorage.removeItem(`nome${i}`)
     i--;
     
@@ -30,10 +28,44 @@ localStorage.setItem(`nome${i}`,valoreinput)
         
         })
 
+        let tempo=0 
+         setInterval(
+          
+            function(){
+                sessionStorage.setItem( "conteggio",tempo++)
+                var timer = sessionStorage.getItem('timer_station');
+         },1000)
+         let attuale = sessionStorage.getItem("count");
+         setInterval(function(){
+             localStorage.setItem("count", i++);
+             sessionStorage.setItem("count", attuale++);
+         },1000);
 
 
 
-
+         let timer = document.querySelector("#timer span")
+         let count = sessionStorage.getItem("count");
+         setInterval(function(){
+             sessionStorage.setItem("count", count)
+             timer.innerHTML = count
+             count++
+             console.log(count)
+         },1000);
+       
+      
+         
+         let newValue = (tempo ? parseInt(tempo,10) : 0)+1
+         
+         function scorrere() {
+             let timer = document.querySelector(".timer")
+             // let tempo = 0;
+             let tempo = sessionStorage.getItem("tempo")
+         
+             let newValue = (tempo ? parseInt(tempo,10) : 0)+1
+             sessionStorage.setItem('tempo', newValue)
+             timer.innerText = tempo
+         }
+         setInterval(scorrere, 1000)
 
 /*class Pet{ 
     static count = 0;
