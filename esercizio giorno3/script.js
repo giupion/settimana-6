@@ -35,22 +35,25 @@ i++;
                 sessionStorage.setItem( "conteggio",tempo++)
                 var timer = sessionStorage.getItem('timer_station');
          },1000)
-         let attuale = sessionStorage.getItem("count");
-         setInterval(function(){
-             localStorage.setItem("count", i++);
-             sessionStorage.setItem("count", attuale++);
-         },1000);
+         
+         
+         
+         //let attuale = sessionStorage.getItem("count");
+         //setInterval(function(){
+            // localStorage.setItem("count", i++);
+           //  sessionStorage.setItem("count", attuale++);
+       //  },1000);
 
 
 
-         let timer = document.querySelector("#timer span")
-         let count = sessionStorage.getItem("count");
-         setInterval(function(){
-             sessionStorage.setItem("count", count)
-             timer.innerHTML = count
-             count++
-             console.log(count)
-         },1000);
+        //  let timer = document.querySelector("#timer span")
+        //  let count = sessionStorage.getItem("count");
+        //  setInterval(function(){
+        //      sessionStorage.setItem("count", count)
+        //      timer.innerHTML = count
+        //      count++
+        //      console.log(count)
+        //  },1000);
        
       
          
